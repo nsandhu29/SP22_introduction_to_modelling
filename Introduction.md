@@ -2,14 +2,14 @@
 > A critical key to success has been analytics modeling, selecting and specifying the right analytics model or models to combine into a solution, compiling, building, and/or forecasting the necessary data sets, and then interpreting the model's output to make suggestions that match the organization's needs, priorities, and structure.
 
 - **Descriptive Questions?** (that ask for explanations of what happened)
- - How much effect did a new system
+  - How much effect did a new system
 for scanning carry-on luggage have
 on airport security wait times?
- - When did the reliability of a critical component of a piece of manufacturing equipment drop below an acceptable level?
- - Which sets of customers are most alike in their buying patterns?
- - What factors are most important
+  - When did the reliability of a critical component of a piece of manufacturing equipment drop below an acceptable level?
+  - Which sets of customers are most alike in their buying patterns?
+  - What factors are most important
 in determining customer similarity?
- - Is a new medical treatment
+  - Is a new medical treatment
 better than what's currently being used?
 
 
