@@ -60,43 +60,42 @@ number of sales recorded on each day.
 ## Data Types
 ### Structured and Unstructured data
 - Structured
-> structured data is what most people envision when
-we think of data, there are some formal technical
-definitions of structured data but essentially, **it's data that can be described and stored in a
-nice structured way**
-
- - Example(Quantitative), credit score,
+  - structured data is what most people envision when we think of data, there are some formal technical definitions of 
+    structured data but essentially, **it's data that can be described and stored in a nice structured way**
+  - Example(Quantitative), credit score,
 age, number of sales, etc are all stored as numbers.
- - Example(Categorical), M/F, Hair Color et cetera.
+  - Example(Categorical), M/F, Hair Color et cetera.
 
 
 - Unstructured
-> **unstructured data
-isn't easily described and stored**
-
- - Example written text
+  - **unstructured data isn't easily described and stored**
+  - Example written text
 
 ### Common types of structured Data
+
 - Quantitative
- - numbers with meaning
-    - Example age, sales, temperature, income
-    - Higher means more, lower means less
+  - numbers with meaning
+     - Example age, sales, temperature, income
+     - Higher means more, lower means less
+
 
 - Categorical
- - Numbers without meaning
-   - Example Zip code
-   - Higher/lower is not meaningful
- - Non - numeric:
-   - Example hair colour
+  - Numbers without meaning
+    - Example Zip code
+    - Higher/lower is not meaningful
+  - Non - numeric:
+    - Example hair colour
+    
 
 - Binary data (Subset of Categorical data)
-  - Can only take two values
-    - Example Male/Female, repaid in full (Y/N), ON/OFF
-    - In some cases we treat this as a Quantitative measure
+   - Can only take two values
+     - Example Male/Female, repaid in full (Y/N), ON/OFF
+     - In some cases we treat this as a Quantitative measure
+
 
 - Unrelated data
-  - No relationship between data points
-    - Example different customers, loan applicants, etc .
+   - No relationship between data points
+     - Example different customers, loan applicants, etc .
 
 - Time series data
   - Data is related in time.For example, let's go back to our daily sales data. Each data point refers to one day and we have an attribute that records each day's sales, one after the other. If we put those data points in chronological order, then reading down the column of data shows the number of sales made day by day, one after another.
