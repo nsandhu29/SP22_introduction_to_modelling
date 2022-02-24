@@ -3,7 +3,8 @@
 
 In this lesson, we'll talk about a simple model for solving classification problems  which can easily deal with cases in which there are more than two classes. This model is called the k-Nearest Neighbor, or KNN model, and the basic idea is simple. Suppose we have a data set with two predictors and a response. 
 
-![knearest](images/2022/02/knearest.png)
+![knearest1](images/2022/02/knearest.png)
+
 For example, a bank might be trying to decide whether or not to give loans to applicants based on the applicant's credit scores and incomes. We can plot all the information on a graph where the horizontal axis shows credit score, the vertical axis shows household income, and each previous applicant is either a green data point if they repaid their entire loan, or a red data point if they defaulted. Instead of trying to draw a line or other function to separate the red points from the green points, we can use a different approach. Assume that each new applicant is similar to previous applicants that it's closest to. For example, if we look at the five closest points to this new one, four of them are green, and only one is red. So, we might assume that the new data point is more likely to be green, and recommend giving that person a new loan. As you might expect, there's nothing magical about using the five closest points.
 We can pick any number of points to use. Usually the number of points we're using is denoted by k, which is where the name k-Nearest Neighbor comes from.
 
