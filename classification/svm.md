@@ -51,7 +51,40 @@ The farther the wrongly classified point is from the line the bigger mistake hav
 Minimize for all $a_0,\ ....,\, a_m$$$\sum_{j=1}^{n}max\{0,1 - (\sum_{i=1}^{m}a_i.x_{ij} + a_0)y_j\} + \lambda\sum_{i=1}^{m}(a_i)^2$$
 To trade off between margin and error, a value of lambda is used to minimize a combination of error and margin. As lambda gets large,  $\sum_{i=1}^{m}(a_i)^2$ gets large. So the importance of a large margin outweighs avoiding mistakes and classifying known data points. And as lambda drops towards zero, $\sum_{i=1}^{m}(a_i)^2$ also drops towards zero, so the importance of minimizing mistakes and classifying known data points outweighs having a large margin. This approach to Classification is called the Support Vector Machine, or SVM model.
 
+![SVM](images/2022/02/support.png)
+
 In the Basic Support Vector Machine Model for Classification remember that we're looking for these two parallel lines that are as far apart as possible while still having all the points of each color on one side of the lines. As seen in above figure, those two points are support vectors. And because the model takes the data set and automatically determines where those two lines should be, and what the support vectors are, it's called the Support Vector Machine Model. And that's where the name comes from. One more observation about the Support Vector Machine Model. Remember that the classifier is actually between the two parallel lines. And therefore it's in-between the support vectors, not touching either of them. So the odd thing about naming this the Support Vector Machine Approach, is that the classifier returns is actually not one of the lines touching a support vector.
+
+How to account for some classification errors being more costly than others, how to prepare your data before running SVM, and whether we can use other types of classifiers.
+
+![SVM](images/2022/02/classification.png)
+
+First, let's look at hard separation, where we get a perfect classification of known data.The classifier we choose can depend on the value of the intercept. Generically, it's 'a' zero, but it can range from 'a' zero minus one to 'a' zero plus one, without making any mistakes on the known data. So we can adjust it as we want. For example, if giving a bad loan is twice as costly as withholding a good loan, we might choose an intercept of two thirds times 'a' zero minus one, plus one third times 'a' zero plus one.
+$$a_1.x_1 + a_2.x_2 + ... + a_m.x_m + [\frac{2}{3}(a_0 - 1) + \frac{1}{3}(a_0 + 1)] = 0$$
+$$a_1.x_1 + a_2.x_2 + ... + a_m.x_m + [a_0 - \frac{1}{3}] = 0$$
+
+In a soft classification context, we might just add an extra multiplier $m_j$ for each type of error with a larger penalty, the less we want to accept mis-classifying that type of point.
+
+Minimize for all $a_0,\ ....,\, a_m$$$\sum_{j=1}^{n}m_j*max\{0,1 - (\sum_{i=1}^{m}a_i.x_{ij} + a_0)y_j\} + \lambda\sum_{i=1}^{m}(a_i)^2$$
+$m_j > 1\; for\; more\ costly\; errors$
+$m_j < 1\; for\; less\ costly\; errors$
+
+Let's take a closer look now at the part of what we're minimizing that helps maximize the margin. We're looking to minimize the sum of the squares of the coefficient.Minimize for all $a_0,\ ....,\, a_m$$$\sum_{i=1}^{m}(a_i)^2$$
+But if our data has very different scales, we could run into a problem. For example, consider our two dimensions of credit score and household income. Credit scores range from about 300 to about 850 with some newer ones going from 150 to 950. In any case, a range of less than 1,000 between the top and bottom. Household incomes measured in dollars could have a range in the millions. That means the two coefficient values, 'a' one and 'a' two, might be different by two or three orders of magnitude. So, when we're looking and adding their squares, a small change in one could swamp a huge change in the other. But the fix isn't too hard. Before we run SVM, we can scale the data so that the orders of magnitude are approximately the same.Once the data is scaled, we can also use the values of the coefficients $a_1$ through $a_m$ to pick out attributes that aren't needed for classification.
+
+In image below, we observe that the classifier is almost parallel to the vertical axis, which implies that the value of the vertical attribute is almost irrelevant for classification.
+
+![vertical](images/2022/02/8.png)
+
+That's a nice observation if we can draw a two dimensional graph, but what happens if our data contains a lot of attributes and we can't just draw a nice picture to see what's going on. In that case, we can check the values of the coefficients, $a_1$ through $a_m$. If there's a coefficient who's value is very close to zero, it means that the corresponding attribute is probably not relevant for classification. For example, in this two dimensional picture, if the vertical axis shows a loan applicant's income, and the coefficient 'a' for income is close to zero, as it is in the picture, then we can eliminate income as an attribute and classify only using the attribute on the horizontal axis.
+
+At this point you might be wondering a few things about SVM and classification.
+
+- First, you might be wondering whether SVM works the same way in more than two dimensions, since most data sets of more than two attributes. The answer is pretty much, yes.
+
+- Second, you might be wondering whether a classifier has to be a straight line. The answer is no. In fact, SVM can be generalized using kernel methods that allow for nonlinear classifiers.
+
+- Third, you might step back and wonder whether some classification questions might also be answered as probabilities. For example, instead of directly saying, "Yes we should give this person a loan." Or, "No, we shouldn't." We could first determine something like, there's a 37% chance that this loan applicant will default, and make our lending decision based on that probability. For some applications, this approach could be more appropriate and the lesson on logistic regression models covers in method for estimating those probabilities.  
 
 ## Additional Resources
 
